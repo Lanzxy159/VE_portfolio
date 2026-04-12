@@ -1,21 +1,7 @@
-const cards = document.querySelectorAll(".card");
+const watchBtn = document.getElementById("watchBtn");
+const heroVideo = document.getElementById("heroVideo");
 
-cards.forEach(card => {
-  const videoId = card.getAttribute("data-video");
-  const iframe = card.querySelector(".yt-preview");
-  const thumbnail = card.querySelector("img");
-
-  card.addEventListener("mouseenter", () => {
-    thumbnail.style.display = "none";
-    iframe.style.display = "block";
-
-    iframe.src =
-      `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&playsinline=1`;
-  });
-
-  card.addEventListener("mouseleave", () => {
-    iframe.src = ""; // stop video properly
-    iframe.style.display = "none";
-    thumbnail.style.display = "block";
-  });
+watchBtn.addEventListener("click", () => {
+  heroVideo.src =
+    "https://www.youtube.com/embed/9lkXgkwCapk?autoplay=1&mute=0&controls=1&rel=0&playsinline=1";
 });
