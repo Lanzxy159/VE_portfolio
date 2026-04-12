@@ -35,15 +35,73 @@ body {
   color: white;
 }
 
+
+
+/* Hero  */
 .hero {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 80px;
-  background: #0a0a0a;
   gap: 60px;
+  position: relative;
+  overflow: hidden;
+
+  /* cinematic gradient base */
+  background: radial-gradient(
+      circle at 20% 20%,
+      rgba(229, 9, 20, 0.25),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 60%,
+      rgba(0, 140, 255, 0.15),
+      transparent 45%
+    ),
+    linear-gradient(135deg, #0a0a0a, #111111);
 }
+
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.05),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(
+    circle,
+    rgba(229, 9, 20, 0.12),
+    transparent 60%
+  );
+  animation: floatGlow 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes floatGlow {
+  0% {
+    transform: translate(-10%, -10%);
+  }
+  50% {
+    transform: translate(10%, 10%);
+  }
+  100% {
+    transform: translate(-10%, -10%);
+  }
+}
+
 
 /* LEFT = CONTENT */
 .hero-content {
@@ -93,9 +151,52 @@ body {
   border-radius: 5px;
 }
 
+/* End hero */
 
 
-/* ROWS */
+
+/* FILTER BAR */
+.filter-bar {
+  display: flex;
+  gap: 12px;
+  padding: 20px 40px;
+  flex-wrap: wrap;
+}
+
+/* FILTER BUTTONS */
+.filter {
+  padding: 8px 16px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  color: #ccc;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+.filter:hover {
+  background: #e50914;
+  color: white;
+  border-color: #e50914;
+}
+
+.filter.active {
+  background: #e50914;
+  color: white;
+  border-color: #e50914;
+}
+
+
+/* hide cards smoothly */
+
+
+
+
+/* Portfolio */
+
+
+
 .row {
   margin: 40px 0;
   padding: 0 40px;
@@ -114,16 +215,43 @@ body {
   overflow: hidden;
   border-radius: 10px;
   cursor: pointer;
+  background: #111;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
-.card img,
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center; /* 🔥 THIS FIXES POSITION */
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  transition: transform 0.4s ease;
+}
+
+.card.hide {
+  opacity: 0;
+  transform: scale(0.9);
+  pointer-events: none;
+}
+
 .yt-preview {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   position: absolute;
   top: 0;
   left: 0;
+  border: none;
+  display: none;
 }
 
 .yt-preview {
@@ -133,10 +261,8 @@ body {
 
 
 .card:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
-
-
 
 .overlay {
   position: absolute;
@@ -144,6 +270,7 @@ body {
   width: 100%;
   padding: 10px;
   background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  pointer-events: none;
 }
 
 /* ABOUT */
