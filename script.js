@@ -6,6 +6,9 @@ watchBtn.addEventListener("click", () => {
     "https://www.youtube.com/embed/9lkXgkwCapk?autoplay=1&mute=0&controls=1&rel=0&playsinline=1";
 });
 
+
+
+
 const filters = document.querySelectorAll(".filter");
 const container = document.querySelector(".row-container");
 const allCards = Array.from(document.querySelectorAll(".card"));
@@ -49,5 +52,37 @@ filters.forEach(btn => {
       container.appendChild(card);
     });
 
+  });
+});
+
+
+const cards = document.querySelectorAll(".card");
+
+cards.forEach(card => {
+  const videoId = card.dataset.video;
+  const type = card.dataset.type;
+  const iframe = card.querySelector(".yt-preview");
+  const img = card.querySelector("img");
+
+  card.addEventListener("mouseenter", () => {
+
+    img.style.display = "none";
+    iframe.style.display = "block";
+
+    if (type === "youtube") {
+      iframe.src =
+        `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}`;
+    }
+
+    if (type === "drive") {
+      iframe.src =
+        `https://drive.google.com/file/d/${videoId}/preview`;
+    }
+  });
+
+  card.addEventListener("mouseleave", () => {
+    iframe.src = "";
+    iframe.style.display = "none";
+    img.style.display = "block";
   });
 });
