@@ -1,1 +1,98 @@
-<!-- testset -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cinematic Portfolio</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div><b>Cinematic Portfolio</b></div>
+    <div class="nav-links">
+      <a href="#hero">Home</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+   <section class="hero" id="hero">
+        <!-- LEFT: CONTENT -->
+        <div class="hero-content">
+            <h1>Cinematic Video Editor</h1>
+            <p>Golf • Real Estate • Ads • Brand Films</p>
+            <button class="btn">Watch Showreel</button>
+        </div>
+
+        <!-- RIGHT: VIDEO -->
+        <div class="hero-video">
+            <div class="video-wrapper">
+            <iframe
+                src="https://www.youtube.com/embed/9lkXgkwCapk?autoplay=1&mute=0&controls=0&rel=0"
+                allow="autoplay"
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+            </div>
+        </div>
+    </section>
+
+
+
+  <!-- ROW -->
+  <section class="row" id="portfolio">
+    <h2>Featured Works</h2>
+
+    <div class="row-container">
+        <div class="card" data-video="rrh9qP287ek">
+            <img src="https://img.youtube.com/vi/rrh9qP287ek/hqdefault.jpg" />
+            <iframe class="yt-preview" allow="autoplay"></iframe>
+            <div class="overlay">Test Video 1</div>
+        </div>
+
+        <div class="card" data-video="-Nf0zbF3ELQ">
+            <img src="https://img.youtube.com/vi/-Nf0zbF3ELQ/hqdefault.jpg" />
+            <iframe class="yt-preview" allow="autoplay"></iframe>
+            <div class="overlay">Test Video 2</div>
+        </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <h2>About</h2>
+    <p>I create cinematic edits that help brands stand out and attract clients.</p>
+
+    <div class="chips">
+      <span>Video Editing</span>
+      <span>Color Grading</span>
+      <span>Motion Design</span>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <h2>Contact</h2>
+    <p>Let’s work together</p>
+    <a href="#">Renzo@email.com</a>
+  </section>
+
+    <div id="yt-container">
+        <iframe id="ytPlayer"
+            frameborder="0"
+            allow="autoplay"
+            allowfullscreen>
+        </iframe>
+    </div>
+    
+
+
+  <script src="script.js"></script>
+</div>
+</body>
+</html>
