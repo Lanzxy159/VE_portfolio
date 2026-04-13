@@ -428,14 +428,62 @@ body {
 
 /* CONTACT */
 .contact {
-  padding: 80px 40px;
+  padding: 100px 20px;
+  background: #0f0f0f;
+  color: white;
   text-align: center;
 }
 
-.contact a {
-  color: #e50914;
+.contact-container {
+  max-width: 700px;
+  margin: auto;
 }
 
+.contact h2 {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.contact-sub {
+  color: #bdbdbd;
+  margin-bottom: 40px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* email card */
+.contact-card {
+  display: inline-block;
+  padding: 25px 40px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  transition: 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-4px);
+  border: 1px solid rgba(0, 255, 200, 0.25);
+}
+
+.contact-card p {
+  margin-bottom: 10px;
+  color: #aaa;
+}
+
+.contact-card a {
+  color: #00ffc8;
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-card a:hover {
+  text-decoration: underline;
+}
+
+/* Yt container */
 #yt-container {
   position: fixed;
   top: 0;
