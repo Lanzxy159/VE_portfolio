@@ -29,7 +29,7 @@ filters.forEach(btn => {
 
     allCards.forEach(card => {
       const match =
-        category === "all" || card.dataset.category === category;
+        category === "all" || card.dataset.category.split(" ").includes(category);
 
       if (match) {
         matched.push(card);
