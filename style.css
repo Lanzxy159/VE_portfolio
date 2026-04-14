@@ -154,6 +154,50 @@ body {
 /* End hero */
 
 
+/* For mobile view */
+
+/* 📱 MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+
+  .hero {
+    flex-direction: column; /* stack vertically */
+    height: auto; /* remove full screen lock */
+    padding: 100px 20px 40px;
+    text-align: center;
+    gap: 30px;
+  }
+
+  /* VIDEO FIRST */
+  .hero-video {
+    order: -1; /* moves video on top */
+  }
+
+  /* FIX VIDEO SIZE */
+  .video-wrapper {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  /* TEXT ADJUST */
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+
+
 
 /* FILTER BAR */
 .filter-bar {
