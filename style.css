@@ -63,6 +63,10 @@ body {
 }
 
 
+
+
+
+
 .hero::before {
   content: "";
   position: absolute;
@@ -109,6 +113,27 @@ body {
   max-width: 500px;
 }
 
+
+#heroimg{
+
+  width: 50%;
+  height: 50%;
+  object-fit: cover;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  transition: 0.3s ease;
+
+}
+
+
+#heroimg:hover {
+  transform: translateY(-4px);
+  border: 1px solid rgba(0, 255, 200, 0.25);
+}
+
+
 /* RIGHT = VIDEO */
 .hero-video {
   flex: 1;
@@ -132,6 +157,8 @@ body {
 }
 
 
+
+
 /* text styling */
 .hero h1 {
   font-size: 50px;
@@ -150,6 +177,9 @@ body {
   cursor: pointer;
   border-radius: 5px;
 }
+
+
+
 
 /* End hero */
 
@@ -357,8 +387,6 @@ body {
 }
 
 
-
-
 /* ABOUT */
 .about {
   padding: 100px 20px;
@@ -447,6 +475,8 @@ body {
   color: #cfcfcf;
   position: relative;
 }
+
+
 
 /* small accent bullet */
 .about ul li::marker {
