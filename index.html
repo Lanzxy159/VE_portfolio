@@ -20,34 +20,34 @@
     </div>
   </div>
 
-  <!-- HERO -->
-   <section class="hero" id="hero">
-    <!-- LEFT CONTENT -->
-    <div class="hero-content">
-      <div class="hero-container">
-        <img id="heroimg" src="assets/pogingtropa.jpg">
+  <section class="hero" id="hero">
+    <div class="hero-inner"> <!-- 👈 NEW WRAPPER -->
+      <!-- LEFT CONTENT -->
+      <div class="hero-content">
+        <div class="hero-container">
+          <img id="heroimg" src="assets/pogingtropa.jpg">
+        </div>
+        <h1>Renzo Chris Gonzales</h1>
+        <p>Looking for affordable quality videos?</p>
+        <button class="btn" id="watchBtn">
+          Play with sound
+        </button>
       </div>
-      <h1>Renzo Chris Gonzales</h1>
-      <p>Looking for a affortable quality videos?</p>
-      <button class="btn" id="watchBtn">
-        Play with sound
-      </button>
-    </div>
 
-    <!-- RIGHT VIDEO -->
-    <div class="hero-video">
+      <!-- RIGHT VIDEO -->
+      <div class="hero-video">
         <div class="video-wrapper">
-        <iframe
+          <iframe
             id="heroVideo"
             src="https://www.youtube.com/embed/9lkXgkwCapk?autoplay=1&mute=1&controls=0&rel=0&playsinline=1"
             allow="autoplay; encrypted-media"
             frameborder="0"
             allowfullscreen>
-        </iframe>
+          </iframe>
         </div>
+      </div>
     </div>
-   </section>
-
+  </section>
     
 
 
@@ -60,11 +60,14 @@
     <button class="filter" data-filter="short-form">Short Form</button>
     <button class="filter" data-filter="long-form">Long Form</button>
    </div>
-  
 
-  
+
   <section class="row" id="portfolio">
     <h2>My Works</h2>
+    <div class="row-controls">
+      <button class="scroll-left">‹</button>
+      <button class="scroll-right">›</button>
+    </div>
     <div class="row-container">
         <div class="card" data-video="rrh9qP287ek" data-type="youtube" data-category="sports long-form">
             <img src="https://img.youtube.com/vi/rrh9qP287ek/hqdefault.jpg" />
@@ -144,6 +147,8 @@
 
 
   </section>
+
+
     <div id="videoModal" class="video-modal">
       <div class="modal-content">
         <span class="close-btn">&times;</span>

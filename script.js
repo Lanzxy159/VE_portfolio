@@ -9,52 +9,117 @@ watchBtn.addEventListener("click", () => {
 });
 
 
-// Categorize
 const filters = document.querySelectorAll(".filter");
 const container = document.querySelector(".row-container");
 const allCards = Array.from(document.querySelectorAll(".card"));
 
+/* =========================
+   FILTER SYSTEM (UNCHANGED)
+========================= */
 filters.forEach(btn => {
   btn.addEventListener("click", () => {
 
-    // active button UI
     filters.forEach(f => f.classList.remove("active"));
     btn.classList.add("active");
 
     const category = btn.dataset.filter;
 
-    // split cards
     let matched = [];
     let unmatched = [];
 
     allCards.forEach(card => {
+
+      const categories = card.dataset.category.split(" ");
+
       const match =
-        category === "all" || card.dataset.category.split(" ").includes(category);
+        category === "all" || categories.includes(category);
 
       if (match) {
         matched.push(card);
       } else {
         unmatched.push(card);
       }
+
+      // visibility control
+      card.classList.toggle("hide", !match);
     });
 
-    // 🔥 CLEAR container
-    container.innerHTML = "";
-
-    // 🔥 APPEND in correct order
-    matched.forEach(card => {
-      card.classList.remove("hide");
+    // reorder (Netflix effect)
+    [...matched, ...unmatched].forEach(card => {
       container.appendChild(card);
     });
 
-    // optional: hide others OR keep them hidden
-    unmatched.forEach(card => {
-      card.classList.add("hide");
-      container.appendChild(card);
-    });
-
+    // reset scroll
+    container.scrollLeft = 0;
   });
 });
+
+
+/* =========================
+   SCROLL BUTTON FIX (NEW)
+========================= */
+
+const leftBtn = document.querySelector(".scroll-left");
+const rightBtn = document.querySelector(".scroll-right");
+
+// dynamic scroll size (IMPORTANT FIX FOR MOBILE)
+function getScrollAmount() {
+  const card = document.querySelector(".card");
+  if (!card) return 300;
+
+  const cardWidth = card.offsetWidth;
+  const style = window.getComputedStyle(card);
+  const gap = parseInt(style.marginRight || 15);
+
+  return cardWidth + gap;
+}
+
+
+function getCardWidth() {
+  const card = document.querySelector(".card");
+  return card ? card.offsetWidth + 15 : 300;
+}
+
+if (leftBtn && rightBtn && container) {
+
+  rightBtn.addEventListener("click", () => {
+    container.scrollBy({
+      left: getCardWidth(),
+      behavior: "smooth"
+    });
+  });
+
+  leftBtn.addEventListener("click", () => {
+    container.scrollBy({
+      left: -getCardWidth(),
+      behavior: "smooth"
+    });
+  });
+
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const container = document.querySelector(".row-container");
+  const leftBtn = document.querySelector(".scroll-left");
+  const rightBtn = document.querySelector(".scroll-right");
+
+  if (!container || !leftBtn || !rightBtn) {
+    console.error("Scroll buttons or container not found");
+    return;
+  }
+
+  leftBtn.addEventListener("click", () => {
+    container.scrollBy({ left: -600, behavior: "smooth" });
+  });
+
+  rightBtn.addEventListener("click", () => {
+    container.scrollBy({ left: 600, behavior: "smooth" });
+  });
+
+});
+
 
 
 
@@ -92,3 +157,5 @@ modal.addEventListener("click", (e) => {
     modalVideo.src = "";
   }
 });
+
+
