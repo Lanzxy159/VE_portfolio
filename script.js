@@ -10,11 +10,10 @@ watchBtn.addEventListener("click", () => {
 
 
 const filters = document.querySelectorAll(".filter");
-const container = document.querySelector(".row-container");
 const allCards = Array.from(document.querySelectorAll(".card"));
 
 /* =========================
-   FILTER SYSTEM (UNCHANGED)
+   FILTER SYSTEM (FIXED)
 ========================= */
 filters.forEach(btn => {
   btn.addEventListener("click", () => {
@@ -24,9 +23,6 @@ filters.forEach(btn => {
 
     const category = btn.dataset.filter;
 
-    let matched = [];
-    let unmatched = [];
-
     allCards.forEach(card => {
 
       const categories = card.dataset.category.split(" ");
@@ -34,92 +30,49 @@ filters.forEach(btn => {
       const match =
         category === "all" || categories.includes(category);
 
-      if (match) {
-        matched.push(card);
-      } else {
-        unmatched.push(card);
-      }
-
-      // visibility control
       card.classList.toggle("hide", !match);
     });
 
-    // reorder (Netflix effect)
-    [...matched, ...unmatched].forEach(card => {
-      container.appendChild(card);
+    // reset ALL row scrolls
+    document.querySelectorAll(".row-container").forEach(container => {
+      container.scrollLeft = 0;
     });
 
-    // reset scroll
-    container.scrollLeft = 0;
   });
 });
 
 
 /* =========================
-   SCROLL BUTTON FIX (NEW)
+   SCROLL SYSTEM (FIXED)
 ========================= */
+document.querySelectorAll(".row").forEach(row => {
 
-const leftBtn = document.querySelector(".scroll-left");
-const rightBtn = document.querySelector(".scroll-right");
+  const container = row.querySelector(".row-container");
+  const leftBtn = row.querySelector(".scroll-left");
+  const rightBtn = row.querySelector(".scroll-right");
 
-// dynamic scroll size (IMPORTANT FIX FOR MOBILE)
-function getScrollAmount() {
-  const card = document.querySelector(".card");
-  if (!card) return 300;
+  if (!container || !leftBtn || !rightBtn) return;
 
-  const cardWidth = card.offsetWidth;
-  const style = window.getComputedStyle(card);
-  const gap = parseInt(style.marginRight || 15);
-
-  return cardWidth + gap;
-}
-
-
-function getCardWidth() {
-  const card = document.querySelector(".card");
-  return card ? card.offsetWidth + 15 : 300;
-}
-
-if (leftBtn && rightBtn && container) {
-
-  rightBtn.addEventListener("click", () => {
-    container.scrollBy({
-      left: getCardWidth(),
-      behavior: "smooth"
-    });
-  });
-
-  leftBtn.addEventListener("click", () => {
-    container.scrollBy({
-      left: -getCardWidth(),
-      behavior: "smooth"
-    });
-  });
-
-}
-
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  const container = document.querySelector(".row-container");
-  const leftBtn = document.querySelector(".scroll-left");
-  const rightBtn = document.querySelector(".scroll-right");
-
-  if (!container || !leftBtn || !rightBtn) {
-    console.error("Scroll buttons or container not found");
-    return;
+  function getScrollAmount() {
+    const card = row.querySelector(".card");
+    return card ? card.offsetWidth + 15 : 300;
   }
 
-  leftBtn.addEventListener("click", () => {
-    container.scrollBy({ left: -600, behavior: "smooth" });
+  rightBtn.addEventListener("click", () => {
+    container.scrollBy({
+      left: getScrollAmount(),
+      behavior: "smooth"
+    });
   });
 
-  rightBtn.addEventListener("click", () => {
-    container.scrollBy({ left: 600, behavior: "smooth" });
+  leftBtn.addEventListener("click", () => {
+    container.scrollBy({
+      left: -getScrollAmount(),
+      behavior: "smooth"
+    });
   });
 
 });
-
 
 
 
