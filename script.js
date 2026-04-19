@@ -42,38 +42,6 @@ filters.forEach(btn => {
 });
 
 
-/* =========================
-   SCROLL SYSTEM (FIXED)
-========================= */
-document.querySelectorAll(".row").forEach(row => {
-
-  const container = row.querySelector(".row-container");
-  const leftBtn = row.querySelector(".scroll-left");
-  const rightBtn = row.querySelector(".scroll-right");
-
-  if (!container || !leftBtn || !rightBtn) return;
-
-  function getScrollAmount() {
-    const card = row.querySelector(".card");
-    return card ? card.offsetWidth + 15 : 300;
-  }
-
-  rightBtn.addEventListener("click", () => {
-    container.scrollBy({
-      left: getScrollAmount(),
-      behavior: "smooth"
-    });
-  });
-
-  leftBtn.addEventListener("click", () => {
-    container.scrollBy({
-      left: -getScrollAmount(),
-      behavior: "smooth"
-    });
-  });
-
-});
-
 
 
 // Modals
